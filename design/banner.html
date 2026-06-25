@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PuppyTrack Banner</title>
+<style>
+  body { margin: 0; background: #1a1a1a; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 20px; font-family: system-ui; }
+  canvas { max-width: 100%; border-radius: 12px; }
+  button { background: #E8520A; color: #fff; border: none; padding: 12px 28px; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; }
+  label { color: #aaa; font-size: 12px; }
+</style>
+</head>
+<body>
+<canvas id="banner" width="1024" height="500" style="width:820px;height:400px"></canvas>
+<label>1024×500 — Play Store Feature Graphic</label>
+<button onclick="dl()">Download 1024×500 PNG</button>
+
+<script>
+const canvas = document.getElementById('banner');
+const ctx = canvas.getContext('2d');
+const W = 1024, H = 500;
+
+// Background gradient
+const grad = ctx.createLinearGradient(0, 0, W, H);
+grad.addColorStop(0, '#FF7340');
+grad.addColorStop(0.6, '#E8520A');
+grad.addColorStop(1, '#8B3007');
+ctx.fillStyle = grad;
+ctx.fillRect(0, 0, W, H);
+
+// Subtle grid texture
+ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+ctx.lineWidth = 1;
+for (let x = 0; x < W; x += 48) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+for (let y = 0; y < H; y += 48) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+// Large faint paw background (decorative)
+ctx.save();
+ctx.globalAlpha = 0.07;
+ctx.fillStyle = '#fff';
+drawPaw(ctx, W * 0.78, H * 0.52, 2.6, 0.3);
+ctx.restore();
+
+// Two main paws — left side
+ctx.fillStyle = 'rgba(255,255,255,0.95)';
+drawPaw(ctx, 188, 248, 1.0, -0.15);
+drawPaw(ctx, 346, 248, 1.0, 0.15);
+
+// Divider line
+ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+ctx.lineWidth = 1.5;
+ctx.beginPath(); ctx.moveTo(480, 80); ctx.lineTo(480, 420); ctx.stroke();
+
+// Text — right side
+ctx.fillStyle = '#fff';
+ctx.textAlign = 'left';
+ctx.textBaseline = 'middle';
+
+// PUPPY
+ctx.font = '900 96px Georgia, serif';
+ctx.fillText('Puppy', 518, 195);
+
+// Track
+ctx.font = '400 62px Georgia, serif';
+ctx.fillStyle = 'rgba(255,255,255,0.75)';
+ctx.fillText('Track', 521, 290);
+
+// Tagline
+ctx.font = '400 22px system-ui';
+ctx.fillStyle = 'rgba(255,255,255,0.55)';
+ctx.fillText('Smart puppy potty training', 519, 360);
+
+function drawPaw(ctx, cx, cy, s, tilt) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(tilt);
+  const b = 86 * s;
+  ellipse(ctx, 0, 52 * s, 86 * s, 68 * s);
+  ellipse(ctx, -64 * s, -20 * s, 28 * s, 34 * s);
+  ellipse(ctx, -22 * s, -60 * s, 28 * s, 34 * s);
+  ellipse(ctx,  22 * s, -60 * s, 28 * s, 34 * s);
+  ellipse(ctx,  64 * s, -20 * s, 28 * s, 34 * s);
+  ctx.restore();
+}
+
+function ellipse(ctx, x, y, rx, ry) {
+  ctx.beginPath();
+  ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function dl() {
+  const a = document.createElement('a');
+  a.href = canvas.toDataURL('image/png');
+  a.download = 'puppytrack-banner-1024x500.png';
+  a.click();
+}
+</script>
+</body>
+</html>

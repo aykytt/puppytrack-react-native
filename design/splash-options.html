@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PuppyTrack — Splash Animasyon Seçenekleri</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111; font-family: system-ui; color: #fff; padding: 40px 20px; }
+h1 { text-align: center; font-size: 18px; color: #aaa; margin-bottom: 40px; letter-spacing: .08em; text-transform: uppercase; }
+.grid { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+.option { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.label { font-size: 13px; font-weight: 700; color: #E8520A; letter-spacing: .06em; text-transform: uppercase; }
+.desc { font-size: 12px; color: #666; text-align: center; max-width: 200px; line-height: 1.6; }
+.phone {
+  width: 200px; height: 360px;
+  background: linear-gradient(160deg, #FF7340, #BF4208);
+  border-radius: 32px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.1);
+}
+.phone::after { content: 'tap to replay'; position: absolute; bottom: 14px; font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: .06em; }
+.paw-group { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.paws { display: flex; gap: 16px; margin-bottom: 8px; }
+.paw { font-size: 38px; display: block; }
+.logo-text { color: #fff; text-align: center; }
+.logo-text .big { font-size: 26px; font-weight: 900; font-family: Georgia, serif; line-height: 1; }
+.logo-text .small { font-size: 17px; font-weight: 400; font-family: Georgia, serif; opacity: 0.7; }
+
+/* Option 2 — trail paws */
+.trail-wrap { position: relative; width: 160px; height: 200px; }
+.trail-paw { position: absolute; font-size: 28px; opacity: 0; }
+
+/* Option 3 — circle morph */
+.morph-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.morph-circle {
+  width: 100px; height: 100px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 44px;
+}
+</style>
+</head>
+<body>
+<h1>Splash Screen — 3 Animasyon Seçeneği</h1>
+<div class="grid">
+
+  <!-- OPTION 1: STAMP -->
+  <div class="option">
+    <div class="phone" id="phone1" onclick="playStamp()">
+      <div class="paw-group" id="stamp-group">
+        <div class="paws">
+          <span class="paw" id="stamp-l">🐾</span>
+          <span class="paw" id="stamp-r">🐾</span>
+        </div>
+        <div class="logo-text" id="stamp-text">
+          <div class="big">Puppy</div>
+          <div class="small">Track</div>
+        </div>
+      </div>
+    </div>
+    <div class="label">A — Stamp</div>
+    <div class="desc">Patiler yukarıdan damga gibi iner, başlık alttan açılır. Güçlü ve doğrudan.</div>
+  </div>
+
+  <!-- OPTION 2: TRAIL -->
+  <div class="option">
+    <div class="phone" id="phone2" onclick="playTrail()">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div class="trail-wrap" id="trail-wrap">
+          <span class="trail-paw" id="tp1" style="left:18px;top:140px">🐾</span>
+          <span class="trail-paw" id="tp2" style="right:14px;top:100px;transform:scaleX(-1)">🐾</span>
+          <span class="trail-paw" id="tp3" style="left:24px;top:58px">🐾</span>
+          <span class="trail-paw" id="tp4" style="right:18px;top:18px;transform:scaleX(-1)">🐾</span>
+        </div>
+        <div class="logo-text" id="trail-text">
+          <div class="big">Puppy</div>
+          <div class="small">Track</div>
+        </div>
+      </div>
+    </div>
+    <div class="label">B — Trail</div>
+    <div class="desc">Patiler birer birer alt-üst sırayla belirir — yürüyüş izi gibi. Başlık en son gelir.</div>
+  </div>
+
+  <!-- OPTION 3: HEARTBEAT -->
+  <div class="option">
+    <div class="phone" id="phone3" onclick="playHeart()">
+      <div class="morph-wrap" id="heart-group">
+        <div class="morph-circle" id="heart-circle">
+          <span id="heart-emoji" style="opacity:0">🐾🐾</span>
+        </div>
+        <div class="logo-text" id="heart-text" style="margin-top:10px">
+          <div class="big">Puppy</div>
+          <div class="small">Track</div>
+        </div>
+      </div>
+    </div>
+    <div class="label">C — Heartbeat</div>
+    <div class="desc">Daire yayılır → patiler içinde belirir → logo çarpıyor gibi büyür. Canlı ve enerjik.</div>
+  </div>
+
+</div>
+
+<script>
+// ── OPTION A: STAMP ────────────────────────────────────────────────
+function playStamp() {
+  const tl = gsap.timeline();
+  gsap.set(['#stamp-l','#stamp-r'], { y: -80, opacity: 0, scale: 0.5 });
+  gsap.set('#stamp-text', { y: 30, opacity: 0 });
+  tl
+    .to('#stamp-l', { y: 0, opacity: 1, scale: 1.15, duration: 0.35, ease: 'back.out(3)' })
+    .to('#stamp-l', { scale: 1, duration: 0.15 }, '<0.35')
+    .to('#stamp-r', { y: 0, opacity: 1, scale: 1.15, duration: 0.35, ease: 'back.out(3)' }, '-=0.2')
+    .to('#stamp-r', { scale: 1, duration: 0.15 }, '<0.35')
+    .to('#stamp-text', { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, '-=0.1');
+}
+
+// ── OPTION B: TRAIL ────────────────────────────────────────────────
+function playTrail() {
+  const tl = gsap.timeline();
+  gsap.set(['#tp1','#tp2','#tp3','#tp4'], { opacity: 0, scale: 0.3 });
+  gsap.set('#trail-text', { opacity: 0, y: 20 });
+  tl
+    .to('#tp1', { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' })
+    .to('#tp2', { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, '+=0.12')
+    .to('#tp3', { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, '+=0.12')
+    .to('#tp4', { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, '+=0.12')
+    .to('#trail-text', { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, '+=0.1');
+}
+
+// ── OPTION C: HEARTBEAT ────────────────────────────────────────────
+function playHeart() {
+  const tl = gsap.timeline();
+  gsap.set('#heart-circle', { scale: 0, opacity: 0, borderRadius: '50%' });
+  gsap.set('#heart-emoji', { opacity: 0, scale: 0.5 });
+  gsap.set('#heart-text', { opacity: 0, scale: 0.8 });
+  tl
+    .to('#heart-circle', { scale: 1, opacity: 1, duration: 0.5, ease: 'expo.out' })
+    .to('#heart-emoji', { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, '-=0.1')
+    .to('#heart-circle', { scale: 1.08, duration: 0.12, ease: 'power2.out' }, '+=0.15')
+    .to('#heart-circle', { scale: 1, duration: 0.12, ease: 'power2.in' })
+    .to('#heart-circle', { scale: 1.04, duration: 0.1, ease: 'power2.out' })
+    .to('#heart-circle', { scale: 1, duration: 0.1, ease: 'power2.in' })
+    .to('#heart-text', { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(1.5)' }, '+=0.05');
+}
+
+// Autoplay all on load
+window.addEventListener('load', () => {
+  setTimeout(playStamp, 300);
+  setTimeout(playTrail, 500);
+  setTimeout(playHeart, 700);
+});
+</script>
+</body>
+</html>

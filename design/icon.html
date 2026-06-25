@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PuppyTrack Icon</title>
+<style>
+  body { margin: 0; background: #1a1a1a; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 24px; font-family: system-ui; }
+  canvas { border-radius: 24px; }
+  .row { display: flex; gap: 24px; align-items: center; }
+  button { background: #E8520A; color: #fff; border: none; padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; }
+  label { color: #aaa; font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="row">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+    <canvas id="c1024" width="1024" height="1024"></canvas>
+    <label>1024×1024 (Expo / App Store)</label>
+    <button onclick="dl('c1024','puppytrack-icon-1024.png')">Download 1024×1024</button>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+    <canvas id="c512" width="512" height="512" style="width:256px;height:256px"></canvas>
+    <label>512×512 (Play Store)</label>
+    <button onclick="dl('c512','puppytrack-icon-512.png')">Download 512×512</button>
+  </div>
+</div>
+
+<script>
+function drawIcon(canvas) {
+  const W = canvas.width;
+  const ctx = canvas.getContext('2d');
+  const s = W / 1024; // scale factor
+
+  // Background gradient
+  const grad = ctx.createLinearGradient(0, 0, W, W);
+  grad.addColorStop(0, '#FF6B2B');
+  grad.addColorStop(1, '#BF4208');
+  ctx.fillStyle = grad;
+  roundRect(ctx, 0, 0, W, W, W * 0.18);
+  ctx.fill();
+
+  // Draw two paws
+  ctx.fillStyle = 'rgba(255,255,255,0.95)';
+
+  // LEFT PAW — center at (330, 440) scaled
+  drawPaw(ctx, 330 * s, 440 * s, s * 1.05, -0.2);
+
+  // RIGHT PAW — center at (694, 440) scaled
+  drawPaw(ctx, 694 * s, 440 * s, s * 1.05, 0.2);
+
+  // "PuppyTrack" text
+  ctx.fillStyle = '#fff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  // PUPPY
+  ctx.font = `900 ${116 * s}px Georgia, serif`;
+  ctx.letterSpacing = `${-2 * s}px`;
+  ctx.fillText('Puppy', W * 0.5, 680 * s);
+
+  // Track
+  ctx.font = `400 ${76 * s}px Georgia, serif`;
+  ctx.fillStyle = 'rgba(255,255,255,0.78)';
+  ctx.fillText('Track', W * 0.5, 778 * s);
+}
+
+function drawPaw(ctx, cx, cy, s, tilt) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(tilt);
+
+  // Main pad
+  ellipse(ctx, 0, 55 * s, 90 * s, 72 * s);
+
+  // Toes
+  ellipse(ctx, -68 * s, -22 * s, 30 * s, 36 * s);
+  ellipse(ctx, -24 * s, -64 * s, 30 * s, 36 * s);
+  ellipse(ctx,  24 * s, -64 * s, 30 * s, 36 * s);
+  ellipse(ctx,  68 * s, -22 * s, 30 * s, 36 * s);
+
+  ctx.restore();
+}
+
+function ellipse(ctx, x, y, rx, ry) {
+  ctx.beginPath();
+  ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.arcTo(x + w, y, x + w, y + r, r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+  ctx.lineTo(x + r, y + h);
+  ctx.arcTo(x, y + h, x, y + h - r, r);
+  ctx.lineTo(x, y + r);
+  ctx.arcTo(x, y, x + r, y, r);
+  ctx.closePath();
+}
+
+function dl(id, name) {
+  const a = document.createElement('a');
+  a.href = document.getElementById(id).toDataURL('image/png');
+  a.download = name;
+  a.click();
+}
+
+drawIcon(document.getElementById('c1024'));
+drawIcon(document.getElementById('c512'));
+</script>
+</body>
+</html>

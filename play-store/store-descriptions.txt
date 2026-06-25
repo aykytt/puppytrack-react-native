@@ -1,0 +1,74 @@
+========================================
+SHORT DESCRIPTION (EN) — max 80 characters
+========================================
+Log potty trips, learn your pup's rhythm, predict the next break.
+
+
+========================================
+FULL DESCRIPTION (EN) — max 4000 characters
+========================================
+PuppyTrack helps you train your dog with data — not guesswork.
+
+Log every bathroom trip in one tap (pee, poop, or both), mark it as a success or accident, and let PuppyTrack learn your dog's rhythm. The more you log, the smarter it gets. After 10 records, you'll see exactly how long your dog can hold it after water or food — and get a live countdown to the next break on the home screen.
+
+WHAT PUPPYTRACK DOES
+
+• Log bathroom events in one tap — pee, poop, or both
+• Mark each as a success (right spot) or accident
+• Log water and food intake to build your dog's personal rhythm
+• Get smart predictions based on your dog's actual patterns, not breed averages
+• Track your accident-free streak day by day
+• View charts: hourly distribution, daily trends, time-of-day breakdown
+• Full history log with filters and delete
+• Morning and night reminder notifications
+• Multiple dog profiles — name, breed size, age, home type
+• Training levels: watch your dog progress from Beginner to Master
+
+FEEDING RHYTHM
+Water and food logs teach PuppyTrack your dog's biology. After 10 paired records, it calculates your dog's personal water→pee and food→poop intervals. A countdown appears on the home screen so you know when to head outside before an accident happens.
+
+CHARTS & ANALYSIS
+Four views let you spot patterns fast — when accidents are most likely to happen, which time of day is hardest, how your success rate trends over the week, and how pee/poop distribution shifts as training progresses.
+
+PRIVACY
+No ads. No third-party tracking. Anonymous behavioral data sharing is strictly opt-in and only ever used to help other dogs train faster.
+
+Available in English and Turkish.
+
+
+========================================
+KISA AÇIKLAMA (TR) — maks. 80 karakter
+========================================
+Tuvalet kayıtlarını tut, ritmi öğren, bir sonraki çıkışı tahmin et.
+
+
+========================================
+TAM AÇIKLAMA (TR) — maks. 4000 karakter
+========================================
+PuppyTrack, köpeğini tahmine değil — veriye dayalı eğitmeni yapar.
+
+Her tuvalet çıkışını tek dokunuşla kaydet (çiş, kaka veya ikisi), başarılı mı kaza mı işaretle. Su içtiğinde ve mama yediğinde de kayıt at. PuppyTrack 10 kayıt sonunda köpeğinin kişisel ritmini hesaplar: su içtikten kaç dakikada çişi geliyor, mama yedikten kaç dakikada kakası? Ana ekranda anlık geri sayım başlar, kaza olmadan dışarı çıkma zamanını tutturmak kolaylaşır.
+
+PUPPYTRACK NE YAPAR
+
+• Tek dokunuşla kayıt — çiş, kaka veya ikisi birden
+• Her kaydı başarı (doğru yer) veya kaza olarak işaretle
+• Su ve mama kayıtları ile köpeğinin kişisel ritmi oluşsun
+• Irk ortalamasına değil, köpeğinin gerçek verilerine dayalı tahmin
+• Kazasız gün serisini günü gününe takip et
+• Grafikler: saatlik dağılım, günlük trend, gün içi analiz
+• Tüm geçmiş, filtre ve silme özelliği
+• Sabah ve gece hatırlatıcı bildirimleri
+• Çoklu köpek profili — ad, ırk büyüklüğü, yaş, yaşam ortamı
+• Eğitim seviyeleri: Başlangıç'tan Usta'ya köpeğinin gelişimini izle
+
+BESLENME RİTMİ
+Su ve mama kayıtları, köpeğinin biyolojisini PuppyTrack'e öğretir. 10 eşleşmiş kayıt sonunda su→çiş ve mama→kaka aralıklarını kişisel olarak hesaplar. Ana ekranda geri sayım başlar, tam zamanında dışarı çıkabilirsin.
+
+ANALİZ GRAFİKLERİ
+4 farklı görünüm — kazaların hangi saatte yoğunlaştığını, günün hangi diliminin zor geçtiğini, haftalık başarı oranının nasıl değiştiğini ve eğitim ilerledikçe çiş/kaka dağılımının nasıl şekillendiğini gösterir.
+
+GİZLİLİK
+Reklam yok. Üçüncü taraf izleme yok. Anonim davranış verisi paylaşımı tamamen isteğe bağlı; yalnızca diğer köpeklerin daha hızlı öğrenmesine katkı sağlamak için kullanılır.
+
+Türkçe ve İngilizce desteklenir.

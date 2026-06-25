@@ -1,25 +1,41 @@
 {
   "expo": {
-    "name": "puppytrack-rn",
-    "slug": "puppytrack-rn",
+    "name": "PuppyTrack",
+    "slug": "puppytrack",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
+    "scheme": "puppytrack",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.puppytrack.app"
     },
     "android": {
+      "package": "com.puppytrack.app",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#F2F1ED"
       },
-      "predictiveBackGestureEnabled": false
+      "newArchEnabled": true
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-secure-store",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#E8520A"
+        }
+      ],
+      "expo-splash-screen",
+      "@react-native-community/datetimepicker"
+    ],
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
